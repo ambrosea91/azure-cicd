@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="1" author="ambrose">
+        <createTable tableName="person">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="first_name" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_name" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="birth_date" type="date">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2" author="josh">
+        <addColumn tableName="person">
+            <column name="email" type="varchar(50)"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="3" author="halley">
+        <dropTable tableName="old_table"/>
+    </changeSet>
+
+    <changeSet id="4" author="mami">
+        <insert tableName="person">
+            <column name="first_name" value="John"/>
+            <column name="last_name" value="Doe"/>
+            <column name="birth_date" valueDate="1980-01-01"/>
+            <column name="email" value="john.doe@example.com"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>
